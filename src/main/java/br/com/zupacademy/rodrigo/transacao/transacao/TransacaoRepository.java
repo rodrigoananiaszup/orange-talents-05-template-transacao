@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface TransacaoRepository extends CrudRepository<Transacao, Long> {
 
-	Page<Transacao> findByUuidCartao(String uuid, Pageable pageable);
+	Page<Transacao> findByCartaoUuid(String uuid, Pageable pageable);
 }

@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/transacoes")
 public class TransacaoController {
 
-	private final TransacaoRepository transacaoRepository;
+	TransacaoRepository transacaoRepository;
 
 	public TransacaoController(TransacaoRepository transacaoRepository) {
 		this.transacaoRepository = transacaoRepository;
@@ -27,7 +27,7 @@ public class TransacaoController {
 	public ResponseEntity<List<TransacaoResponse>> mostrarTransacao(@PathVariable(required = true) String uuid,
 			@PageableDefault(page = 0, size = 10, sort = "efetivadoEm", direction = Direction.DESC) Pageable pageable) {
 
-		Page<Transacao> listaTransacao = transacaoRepository.findByUuidCartao(uuid, pageable);
+		Page<Transacao> listaTransacao = transacaoRepository.findByCartaoUuid(uuid, pageable);
 		if (listaTransacao.isEmpty()) {
 			return ResponseEntity.notFound().build();
 		}
