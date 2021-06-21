@@ -46,6 +46,11 @@ public class Transacao {
 
 	@NotNull
 	private LocalDateTime efetivadoEm;
+	
+	@Deprecated
+	public Transacao() {
+
+	}
 
 	public Transacao(@NotBlank String uuid, @NotNull @Positive BigDecimal valor,
 			EstabelecimentoTransacao estabelecimento, Cartao cartao, @NotNull LocalDateTime efetivadoEm) {
